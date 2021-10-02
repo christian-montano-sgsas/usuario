@@ -1,0 +1,45 @@
+<ion-header no-border>
+    <ion-toolbar color="secondary">
+        <ion-title>
+            Prueba de Ingreso
+        </ion-title>
+    </ion-toolbar>
+    <ion-searchbar color="secondary" animated="true" autocomplete="on" placeholder="Buscar Usuario" (ionChange)="filtroUsuario($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+    <div *ngIf="this.mMensaje?.length === 0">
+        <ion-icon name="information-circle-outline" color="warning" class="icon-lista"></ion-icon>
+        <div class="lista"> List is Empty </div>
+    </div>
+
+    <ion-card *ngFor="let usuario of mUsuarios | filtroUsuario : mFilter">
+        <ion-row>
+            <div>
+                <ion-label>{{usuario.name}}</ion-label>
+            </div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <ion-icon slot="start" name="call-outline"></ion-icon>&nbsp; {{usuario.phone}}
+            </div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <ion-icon slot="start" name="mail-outline"></ion-icon>&nbsp; {{usuario.email}}
+            </div>
+        </ion-row>
+        <div>
+            <h5 class="publica">
+                <ion-button shape="round" fill="outline" (click)="irVerPublicacones(usuario.id)">Ver Publicaciones</ion-button>
+            </h5>
+        </div>
+    </ion-card>
+
+
+</ion-content>

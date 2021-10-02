@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-icon slot="start" name="arrow-back" (click)="onClickNavBack()"></ion-icon>
+        <ion-title>publicaciones</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="card1">
+        <ion-row>
+            <div>
+                <ion-label>{{mUsuario?.name}}</ion-label>
+            </div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <ion-icon slot="start" name="call-outline"></ion-icon>&nbsp; {{mUsuario?.phone}}
+            </div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <ion-icon slot="start" name="mail-outline"></ion-icon>&nbsp; {{mUsuario?.email}}
+            </div>
+        </ion-row>
+    </ion-card>
+    <ion-card class="card2">
+        <ion-list>
+            <ion-item *ngFor="let publicacion of mPublicaciones">
+                <ion-grid>
+                    <ion-col>
+                        <ion-row class="titulo">
+                            {{publicacion.title}}
+                        </ion-row>
+                        <br>
+                        <ion-row class="cuerpo">
+                            {{publicacion.body}}
+                        </ion-row>
+                    </ion-col>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>
